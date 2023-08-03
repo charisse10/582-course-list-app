@@ -1,8 +1,11 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-  <CourseItem @add-course="addCourse" />
-  <h4>Number of Courses: {{ count }}</h4>
+  <h2>List of Courses</h2>
+  <h4>Selected Courses: {{ count }}</h4>
+  <!-- <CourseItem @outerAdd="AddCourse" /> -->
+  <CourseItem :updateCount="updateCount" />
+
   <!-- <CourseItem v-for="student in students" :key="student.id" /> -->
 </template>
 
@@ -22,8 +25,12 @@ export default {
     CourseItem,
   },
   methods: {
-    addCourse() {
-      this.count++;
+    updateCount(isAdded) {
+      if (isAdded) {
+        this.count++;
+      } else {
+        this.count--;
+      }
     },
   },
 };

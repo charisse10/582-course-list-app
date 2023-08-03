@@ -1,6 +1,4 @@
 <template>
-  <h2>List of Courses</h2>
-  
   <!-- <button @click="innerAdd">Add</button> -->
   <!-- <button @click="outerAdd">Add to Parent</button> -->
   <div class="card">
@@ -10,16 +8,22 @@
     <div>Credit: {{ courses[0].credits }}</div>
     <div>Teacher: {{ courses[0].teacher }}</div>
     <div>Time: {{ courses[0].time }}</div>
-    <!-- <button @click="innerAdd">Add</button> -->
+    <!-- <button @click="AddingCourse">Add</button> -->
+    <button @click="toggleAddingCourse">
+      {{ isAdded ? "Remove" : "Add" }}
+    </button>
   </div>
 </template>
 
 <script>
 export default {
   name: "CourseItem",
+  props: {
+    updateCount: Function,
+  },
   data() {
     return {
-      count: 0,
+      isAdded: false,
       courses: [
         {
           name: "Web Framework",
@@ -29,15 +33,32 @@ export default {
           teacher: "Peter",
           time: "14:00-17:30",
         },
+        {
+          name: "Mobile App",
+          description: "Learn how to build mobile apps",
+          id: "582-41C",
+          credits: 3,
+          teacher: "John",
+          time: "14:00-17:30",
+        },
+        {
+          name: "Data Science",
+          description: "Learn how to analyze data",
+          id: "582-41D",
+          credits: 3,
+          teacher: "Mary",
+          time: "14:00-17:30",
+        },
       ],
     };
   },
   methods: {
-    innerAdd() {
-      this.count++;
-    },
-    outerAdd() {
-      this.$emit("add-course");
+    // AddingCourse() {
+    //   // this.$emit("outerAdd");
+    // },
+    toggleAddingCourse() {
+      this.isAdded = !this.isAdded;
+      this.updateCount(this.isAdded);
     },
   },
 };
