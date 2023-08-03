@@ -1,15 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
+  <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+  <CourseItem @add-course="addCourse" />
+  <!-- <CourseItem v-for="student in students" :key="student.id" /> -->
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
+import CourseItem from "./components/CourseItem.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      count: 0,
+    };
+  },
   components: {
-    HelloWorld,
+    // HelloWorld,
+    CourseItem,
+  },
+  methods: {
+    // addCourse() {
+    //   this.count++;
+    // },
   },
 };
 </script>
