@@ -2,7 +2,7 @@
   <!-- <button @click="innerAdd">Add</button> -->
   <!-- <button @click="outerAdd">Add to Parent</button> -->
   <div class="card-flex">
-    <div v-for="(course, index) in courses" :key="index" class="card">
+    <div v-for="course in courses" :key="course.id" class="card">
       <div class="name">{{ course.name }}</div>
       <div>{{ course.description }}</div>
       <div>ID: {{ course.id }}</div>
@@ -10,10 +10,10 @@
       <div>Hours: {{ course.hours }}</div>
       <div>Instructor: {{ course.instructor }}</div>
       <div>
-        Number of students:
-        {{ course.clicks === 20 ? "FULL" : course.clicks + " of 20" }}
+        Number of students:{{
+          course.clicks === 20 ? "FULL" : course.clicks + " of 20"
+        }}
       </div>
-
       <!-- <button @click="AddingCourse">Add</button> -->
       <button
         @click="toggleAddingCourse(course)"
@@ -142,7 +142,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -156,33 +156,37 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 25px;
-}
 
-.card {
-  width: calc(33.33% - 25px);
-  border: 2px solid #cacaca;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-}
+  .card {
+    width: calc(33.33% - 25px);
+    border: 2px solid #cacaca;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
 
-.name {
-  color: rgb(5, 34, 129);
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-}
+    .name {
+      color: rgb(5, 34, 129);
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
 
-button {
-  margin-top: 10px;
-  padding: 5px 30px;
-  border-radius: 25px;
-  border: none;
-  background-color: #0852f0;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bolder;
+    button {
+      margin-top: 10px;
+      padding: 5px 30px;
+      border-radius: 25px;
+      border: none;
+      background-color: #088318;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bolder;
 
-  cursor: pointer;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #036d11;
+    }
+  }
 }
 </style>
