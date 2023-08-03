@@ -25,7 +25,7 @@ export default {
     CourseItem,
   },
   methods: {
-    updateCount(isAdded) {
+        updateCount(isAdded) {
       if (isAdded) {
         this.count++;
       } else {
