@@ -1,6 +1,6 @@
 <template>
   <h2>List of Courses</h2>
-  <h4>Number of Courses: {{ count }}</h4>
+  
   <!-- <button @click="innerAdd">Add</button> -->
   <!-- <button @click="outerAdd">Add to Parent</button> -->
   <div class="card">
@@ -10,7 +10,7 @@
     <div>Credit: {{ courses[0].credits }}</div>
     <div>Teacher: {{ courses[0].teacher }}</div>
     <div>Time: {{ courses[0].time }}</div>
-    <button @click="addApp">Add Course</button>
+    <!-- <button @click="innerAdd">Add</button> -->
   </div>
 </template>
 
@@ -33,7 +33,10 @@ export default {
     };
   },
   methods: {
-    addCourse() {
+    innerAdd() {
+      this.count++;
+    },
+    outerAdd() {
       this.$emit("add-course");
     },
   },

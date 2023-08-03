@@ -2,6 +2,7 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   <CourseItem @add-course="addCourse" />
+  <h4>Number of Courses: {{ count }}</h4>
   <!-- <CourseItem v-for="student in students" :key="student.id" /> -->
 </template>
 
@@ -21,9 +22,9 @@ export default {
     CourseItem,
   },
   methods: {
-    // addCourse() {
-    //   this.count++;
-    // },
+    addCourse() {
+      this.count++;
+    },
   },
 };
 </script>
