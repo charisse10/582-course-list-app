@@ -9,9 +9,16 @@
       <div>Credit: {{ course.credits }}</div>
       <div>Hours: {{ course.hours }}</div>
       <div>Instructor: {{ course.instructor }}</div>
+      <div>
+        Number of students:
+        {{ course.clicks === 20 ? "FULL" : course.clicks + " of 20" }}
+      </div>
 
       <!-- <button @click="AddingCourse">Add</button> -->
-      <button @click="toggleAddingCourse(course)">
+      <button
+        @click="toggleAddingCourse(course)"
+        :disabled="course.clicks >= 20"
+      >
         {{ course.isAdded ? "Remove" : "Add" }}
       </button>
     </div>
@@ -35,6 +42,7 @@ export default {
           hours: 60,
           instructor: "Peter",
           isAdded: false,
+          clicks: 0,
         },
         {
           name: "Mobile App",
@@ -44,6 +52,7 @@ export default {
           hours: 90,
           instructor: "John",
           isAdded: false,
+          clicks: 0,
         },
         {
           name: "Data Science",
@@ -53,6 +62,7 @@ export default {
           hours: 70,
           instructor: "Mary",
           isAdded: false,
+          clicks: 0,
         },
         {
           name: "Machine Learning",
@@ -62,6 +72,7 @@ export default {
           hours: 80,
           instructor: "Tom",
           isAdded: false,
+          clicks: 0,
         },
         {
           name: "Deep Learning",
@@ -71,6 +82,7 @@ export default {
           hours: 120,
           instructor: "Jerry",
           isAdded: false,
+          clicks: 0,
         },
         {
           name: "Computer Vision",
@@ -80,6 +92,7 @@ export default {
           hours: 100,
           instructor: "Peter",
           isAdded: false,
+          clicks: 0,
         },
         {
           name: "Natural Language Processing",
@@ -89,6 +102,7 @@ export default {
           hours: 50,
           instructor: "John",
           isAdded: false,
+          clicks: 0,
         },
         {
           name: "Data Visualization",
@@ -98,6 +112,7 @@ export default {
           hours: 90,
           instructor: "Mary",
           isAdded: false,
+          clicks: 0,
         },
         {
           name: "Data Mining",
@@ -107,6 +122,7 @@ export default {
           hours: 40,
           instructor: "Tom",
           isAdded: false,
+          clicks: 0,
         },
       ],
     };
@@ -116,8 +132,11 @@ export default {
     //   // this.$emit("outerAdd");
     // },
     toggleAddingCourse(course) {
-      course.isAdded = !course.isAdded;
-      this.updateCount(course.isAdded);
+      if (course.clicks < 20) {
+        course.isAdded = !course.isAdded;
+        this.updateCount(course.isAdded);
+        course.clicks++;
+      }
     },
   },
 };
@@ -144,7 +163,7 @@ export default {
   border: 2px solid #cacaca;
   border-radius: 10px;
   padding: 20px;
-  text-align: center
+  text-align: center;
 }
 
 .name {
