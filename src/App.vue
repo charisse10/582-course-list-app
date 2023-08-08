@@ -1,7 +1,7 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-  <h1>TESTING</h1>
+  <h1>TESTING MAC</h1>
   <h2>List of Courses</h2>
   <h4>Selected Courses: {{ count }}</h4>
   <!-- <CourseItem @outerAdd="AddCourse" /> -->
